@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Евгений Щербаченко](https://up.htmlacademy.ru/javascript/28/user/2178801).
-* Наставник: `Неизвестно`.
+* Наставник: [Rail Sakhaviev](https://htmlacademy.ru/profile/id1331891).
 
 ---
 
