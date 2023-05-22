@@ -1,5 +1,5 @@
 // Массив текста комментария — message  //
-const massageTextArray = [
+const messages = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -8,7 +8,7 @@ const massageTextArray = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-const namesАrray = [
+const names = [
   'Михаил',
   'Анатолий',
   'Тимур',
@@ -17,7 +17,7 @@ const namesАrray = [
   'Даша'
 ];
 
-const descriptionArray = [
+const descriptions = [
   'Мы на море!',
   'Музон',
   'Супер кар!!',
@@ -27,43 +27,36 @@ const descriptionArray = [
   'Ну как-то так...'
 ];
 
-// Функция генерации случайного числа //
-const getRandomInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-};
-
+import { getRandomInteger } from './functions.js';
 
 // Создание объекта для комментария //
-const createCommentText = function(indexComment){
+const createComment = function(index){
   return {
-    id:indexComment,
-    avatar:'img/avatar-' + getRandomInteger(1,6) + '.svg',
-    message:massageTextArray[getRandomInteger(0, massageTextArray.length - 1)],
-    name:namesАrray[getRandomInteger(0, namesАrray.length - 1)]
+    id:index,
+    avatar: `img/avatar-${getRandomInteger(1,6)}.svg`,
+    message:messages[getRandomInteger(0, messages.length - 1)],
+    name:names[getRandomInteger(0, names.length - 1)]
   };
 };
 
 // Создание одного экземпляра объекта для фото //
-const createPicture = function(indexPhoto){
-  const ArrayComments = [];
+const createPicture = function(index){
+  const comments = [];
   for (let j = 0; j < getRandomInteger(0,2); j++){
-    ArrayComments[j] = createCommentText(indexPhoto + j);
+    comments[j] = createComment(index + j);
   }
   return {
-    id:indexPhoto,
-    url:'photos/' + indexPhoto + '.jpg',
-    description:descriptionArray[getRandomInteger(0,descriptionArray.length - 1)],
+    id:index,
+    url:`photos/${index}.jpg`,
+    description:descriptions[getRandomInteger(0,descriptions.length - 1)],
     likes:getRandomInteger(15,200),
-    comments:ArrayComments
+    comments:comments
   };
 };
 
 
 // Создание массива объектов фото //
-const ArrayPhoto = [];
+const pictures = [];
 for(let i = 0; i < 25; i++){
-  ArrayPhoto[i] = createPicture(i + 1);
+  pictures.push(createPicture(i + 1));
 }
