@@ -44,3 +44,5 @@ const getRandomInteger = (a, b) => {
   return Math.floor(result);
 };
 getRandomInteger();
+
+export {getRandomInteger};
